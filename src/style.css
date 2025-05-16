@@ -1,7 +1,265 @@
+:root {
+  /* Colors */
+  --clr-green-400: hsl(172, 67%, 45%);
+  --clr-green-900: 183, 100%, 15%;
+  --clr-grey-500: hsl(186, 14%, 43%);
+  --clr-grey-400: hsl(184, 14%, 56%);
+  --clr-grey-200: 185, 41%, 84%;
+  --clr-grey-50: hsl(189, 47%, 97%);
+  --clr-White: hsl(0, 100%, 100%);
 
+  /* Typograghy */
+  --ff-primary: "Space Mono", monospace;;
 
+  --fs-base: 1.5rem;
+  --fs-28-40: clamp(1.75rem, 1.4891rem + 1.3043vw, 2.5rem);
 
+  --fw-bold: 700;
+  
+  /* Space */
+  --space-16-32: clamp(1rem, 0.6522rem + 1.7391vw, 2rem);
+  --space-16-40: clamp(1rem, 0.4783rem + 2.6087vw, 2.5rem);
+  --space-24-40: clamp(1.5rem, 1.1522rem + 1.7391vw, 2.5rem);
+  --space-20-48: clamp(1.25rem, 0.6413rem + 3.0435vw, 3rem);
+  --space-30-40: clamp(1.875rem, 1.6576rem + 1.087vw, 2.5rem);
+  --space-42-56: clamp(2.625rem, 2.3207rem + 1.5217vw, 3.5rem);
+  --space-28-72: clamp(1.75rem, 0.7935rem + 4.7826vw, 4.5rem);
+}
 
+/* CSS reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  min-block-size: 100vh;
+  line-height: 1.5;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-inline-size: 100%;
+}
+
+/* General styling */
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  background-color: hsl(var(--clr-grey-200));
+  color: var(--clr-grey-400);
+  place-content: center;
+}
+
+input {
+  inline-size: 100%;
+}
+
+/* Hide number spin controls for Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+/* Hide number spin controls for Firefox */
+input[type="number"] {
+  appearance: textfield;
+}
+
+/* Main content */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+main {
+  margin-block: 2rem;
+}
+
+.tip-calculator-wrapper {
+  max-inline-size: 35rem;
+  margin-inline: auto;
+}
+
+@media(width >= 48rem) {
+  .tip-calculator-wrapper {
+    max-inline-size: 57.625rem;
+  }
+}
+
+.tip-calculator-wrapper h2 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  font-size: 1.25rem;
+  color: hsla(var(--clr-green-900), 0.75);
+  margin-block-end: var(--space-28-72);
+}
+
+.tip-calculator-body {
+  background-color: var(--clr-grey-50);
+  border-start-start-radius: 1.5rem;
+  border-start-end-radius: 1.5rem;
+  display: grid;
+}
+
+@media(width >= 48rem) {
+  .tip-calculator-body {
+    grid-template-columns: 1fr 1fr;
+    border-end-start-radius: 1.5rem;
+    border-end-end-radius: 1.5rem;
+  }
+}
+
+.form {
+  padding: var(--space-20-48);
+}
+
+form > *:not(:last-child) {
+  margin-block-end: 2.125rem;
+}
+
+label {
+  display: block;
+}
+
+.label {
+  font-size: .875rem;
+  color: var(--clr-grey-500);
+  margin-block-end: .5rem;
+}
+
+input[type="number"] {
+  text-align: end;
+  height: 3rem;
+  border: 0;
+  background-color: hsla(var(--clr-grey-200), 0.3);
+  border-radius: .25rem;
+  padding-inline-end: 1rem;
+  color: var(--clr-grey-400);
+}
+
+.bill-input-decor {
+  display: block;
+  position: relative;
+}
+
+.bill-input-decor::before {
+  position: absolute;
+  content: url("/src/images/icon-dollar.svg");
+  place-content: center;
+  height: 3rem;
+  top: -3rem;
+  left: 1rem;
+}
+
+.tip-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media(width >= 48rem) {
+  .tip-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tip-button {
+  cursor: pointer;
+  padding: 6% 12%;
+  background-color: hsl(var(--clr-green-900));
+  color: var(--clr-White);
+  border: 0;
+  border-radius: .5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-tip-input {
+  border: 0;
+  background-color: hsla(var(--clr-grey-200), 0.35);
+  border-radius: .5rem;
+  text-align: center;
+}
+
+.people-input-decor {
+  display: block;
+  position: relative;
+}
+
+.people-input-decor::before {
+  position: absolute;
+  content: url("/src/images/icon-person.svg");
+  place-content: center;
+  height: 3rem;
+  top: -3rem;
+  left: 1rem;
+}
+
+.output-section {
+  margin-inline: var(--space-16-32);
+  margin-block-end: var(--space-16-32);
+  padding-inline: var(--space-16-40);
+  padding-block-start: var(--space-42-56);
+  padding-block-end: var(--space-24-40);
+  background-color: hsl(var(--clr-green-900));
+  border-radius: 1rem;
+}
+
+@media(width >= 48rem) {
+  .output-section {
+    margin-inline: 0 var(--space-16-32);
+    margin-block: var(--space-16-32);
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.output-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-block-end: 2rem;
+}
+
+.output-label {
+  font-size: .875rem;
+  color: var(--clr-White);
+}
+
+.output-label span {
+  color: var(--clr-grey-400);
+}
+
+.output-value {
+  font-size: var(--fs-28-40);
+  color: var(--clr-green-400);
+}
+
+.reset-button {
+  margin-block-start: auto;
+  padding: .5rem;
+  cursor: pointer;
+  background-color: var(--clr-green-400);
+  border: 0;
+  border-radius: .25rem;
+  color: hsl(var(--clr-green-900));
+  width: 100%;
+}
