@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="32x32" href="src/images/favicon-32x32.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frontend Mentor | Tip calculator app</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="src/style.css">
-  </head>
-  <body>
-    <header>
-      <h1 class="visually-hidden">Tip calculator app</h1>
-    </header>
-    <main>
-      <article class="tip-calculator-wrapper">
-        <h2>spli<br>tter</h2>
-        <div class="tip-calculator-body">
-          <form class="form">
-            <div class="form-group">
-              <label class="label" for="bill-input">Bill</label>
-              <input type="number" id="bill-input" class="bill-input" name="bill-input" />
-              <span class="bill-input-decor"></span>
-            </div>
-            <section class="tip-options-wrapper">
-              <h3 class="label">Select Tip %<h3>
-              <div class="tip-options">
-                <button class="tip-button">5%</button>
-                <button class="tip-button">10%</button>
-                <button class="tip-button">15%</button>
-                <button class="tip-button">25%</button>
-                <button class="tip-button">50%</button>
-                <input type="text" class="custom-tip-input" placeholder="Custom" aria-label="Enter tip percent" />
-              </div>
-            </section>
-            <div class="form-group">
-              <label class="label" for="people-input">Number of People</label>
-              <input type="number" class="people-input" name="people-input" id="people-input" />
-              <span class="people-input-decor"></span>
-            </div>
-          </form>
-          <div class="output-section">     
-            <div class="output-group">
-              <p class="output-label">Tip Amount<br><span>/ person</span></p>
-              <p class="output-value output-tip-value">$0.00</p>
-            </div>
-            <div class="output-group">
-              <p class="output-label">Total<br><span>/ person</span></p>
-              <p class="output-value output-total-value">$0.00</p>
-            </div>
-            <button class="reset-button">Reset</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" sizes="32x32" href="src/images/favicon-32x32.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Mentor | Tip calculator app</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+  <header>
+    <h1 class="visually-hidden">Tip calculator app</h1>
+  </header>
+  <main>
+    <article class="tip-calculator-wrapper">
+      <h2>spli<br>tter</h2>
+      <div class="tip-calculator-body">
+        <form class="form">
+          <div class="form-group">
+            <label class="label" for="bill-input">Bill</label>
+            <input type="number" id="bill-input" class="bill-input" name="bill-input" min="0" step="0.01" placeholder="0" />
+            <span class="bill-input-decor"></span>
           </div>
+          <section class="tip-options-wrapper">
+            <h3 class="label">Select Tip %<h3>
+                <div class="tip-options">
+                  <button class="tip-button">5%</button>
+                  <button class="tip-button">10%</button>
+                  <button class="tip-button">15%</button>
+                  <button class="tip-button">25%</button>
+                  <button class="tip-button">50%</button>
+                  <input type="number" class="custom-tip-input" placeholder="Custom" aria-label="Enter tip percent" />
+                </div>
+          </section>
+          <div class="form-group">
+            <label class="label" for="people-input">Number of People</label>
+            <input type="number" class="people-input" name="people-input" id="people-input" min="0" placeholder="0" />
+            <span class="people-input-decor"></span>
+          </div>
+        </form>
+        <div class="output-section">
+          <div class="output-group">
+            <p class="output-label">Tip Amount<br><span>/ person</span></p>
+            <p class="output-value output-tip-value">$0.00</p>
+          </div>
+          <div class="output-group">
+            <p class="output-label">Total<br><span>/ person</span></p>
+            <p class="output-value output-total-value">$0.00</p>
+          </div>
+          <button class="reset-button">Reset</button>
         </div>
-      </article>
-    </main>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+      </div>
+    </article>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

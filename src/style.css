@@ -144,13 +144,21 @@ label {
 }
 
 input[type="number"] {
-  text-align: end;
   height: 3rem;
   border: 0;
   background-color: hsla(var(--clr-grey-200), 0.3);
   border-radius: .25rem;
-  padding-inline-end: 1rem;
   color: var(--clr-grey-400);
+}
+
+input[type="number"]:is(:hover, :focus-visible) {
+  outline: 2px solid var(--clr-green-400);
+  color: hsl(var(--clr-green-900));
+}
+
+.bill-input {
+  text-align: end;
+  padding-inline-end: 1rem;
 }
 
 .bill-input-decor {
@@ -191,11 +199,26 @@ input[type="number"] {
   justify-content: center;
 }
 
+.tip-button:hover {
+  background-color: var(--clr-green-400);
+  color: hsl(var(--clr-green-900));
+}
+
+.tip-button:focus-visible {
+  outline: 2px solid var(--clr-grey-500);
+  outline-offset: 2px;
+}
+
 .custom-tip-input {
   border: 0;
   background-color: hsla(var(--clr-grey-200), 0.35);
   border-radius: .5rem;
   text-align: center;
+}
+
+.people-input {
+  text-align: end;
+  padding-inline-end: 1rem;
 }
 
 .people-input-decor {
@@ -262,4 +285,10 @@ input[type="number"] {
   border-radius: .25rem;
   color: hsl(var(--clr-green-900));
   width: 100%;
+  opacity: 0.5;
 }
+
+.reset-button:is(:hover, :focus-visible) {
+  opacity: 1;
+}
+
