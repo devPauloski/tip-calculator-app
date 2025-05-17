@@ -125,7 +125,7 @@ main {
   }
 }
 
-.form {
+form {
   padding: var(--space-20-48);
 }
 
