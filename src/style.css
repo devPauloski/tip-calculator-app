@@ -9,13 +9,13 @@
   --clr-White: hsl(0, 100%, 100%);
 
   /* Typograghy */
-  --ff-primary: "Space Mono", monospace;;
+  --ff-primary: "Space Mono", monospace;
 
   --fs-base: 1.5rem;
   --fs-28-40: clamp(1.75rem, 1.4891rem + 1.3043vw, 2.5rem);
 
   --fw-bold: 700;
-  
+
   /* Space */
   --space-16-32: clamp(1rem, 0.6522rem + 1.7391vw, 2rem);
   --space-16-40: clamp(1rem, 0.4783rem + 2.6087vw, 2.5rem);
@@ -65,16 +65,6 @@ input {
   inline-size: 100%;
 }
 
-/* Hide number spin controls for Chrome, Safari, Edge, Opera */
-input[type="number"]::-webkit-inner-spin-button {
-  appearance: none;
-}
-
-/* Hide number spin controls for Firefox */
-input[type="number"] {
-  appearance: textfield;
-}
-
 /* Main content */
 .visually-hidden {
   clip: rect(0 0 0 0);
@@ -95,7 +85,7 @@ main {
   margin-inline: auto;
 }
 
-@media(width >= 48rem) {
+@media (width >= 48rem) {
   .tip-calculator-wrapper {
     max-inline-size: 57.625rem;
   }
@@ -104,7 +94,7 @@ main {
 .tip-calculator-wrapper h2 {
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: .5rem;
+  letter-spacing: 0.5rem;
   font-size: 1.25rem;
   color: hsla(var(--clr-green-900), 0.75);
   margin-block-end: var(--space-28-72);
@@ -117,7 +107,7 @@ main {
   display: grid;
 }
 
-@media(width >= 48rem) {
+@media (width >= 48rem) {
   .tip-calculator-body {
     grid-template-columns: 1fr 1fr;
     border-end-start-radius: 1.5rem;
@@ -138,20 +128,20 @@ label {
 }
 
 .label {
-  font-size: .875rem;
+  font-size: 0.875rem;
   color: var(--clr-grey-500);
-  margin-block-end: .5rem;
+  margin-block-end: 0.5rem;
 }
 
-input[type="number"] {
+input[type="text"] {
   height: 3rem;
   border: 0;
   background-color: hsla(var(--clr-grey-200), 0.3);
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   color: var(--clr-grey-400);
 }
 
-input[type="number"]:is(:hover, :focus-visible) {
+input[type="text"]:is(:hover, :focus-visible) {
   outline: 2px solid var(--clr-green-400);
   color: hsl(var(--clr-green-900));
 }
@@ -181,7 +171,7 @@ input[type="number"]:is(:hover, :focus-visible) {
   gap: 1rem;
 }
 
-@media(width >= 48rem) {
+@media (width >= 48rem) {
   .tip-options {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -193,7 +183,7 @@ input[type="number"]:is(:hover, :focus-visible) {
   background-color: hsl(var(--clr-green-900));
   color: var(--clr-White);
   border: 0;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -212,7 +202,7 @@ input[type="number"]:is(:hover, :focus-visible) {
 .custom-tip-input {
   border: 0;
   background-color: hsla(var(--clr-grey-200), 0.35);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   text-align: center;
 }
 
@@ -245,7 +235,7 @@ input[type="number"]:is(:hover, :focus-visible) {
   border-radius: 1rem;
 }
 
-@media(width >= 48rem) {
+@media (width >= 48rem) {
   .output-section {
     margin-inline: 0 var(--space-16-32);
     margin-block: var(--space-16-32);
@@ -263,7 +253,7 @@ input[type="number"]:is(:hover, :focus-visible) {
 }
 
 .output-label {
-  font-size: .875rem;
+  font-size: 0.875rem;
   color: var(--clr-White);
 }
 
@@ -278,11 +268,11 @@ input[type="number"]:is(:hover, :focus-visible) {
 
 .reset-button {
   margin-block-start: auto;
-  padding: .5rem;
+  padding: 0.5rem;
   cursor: pointer;
   background-color: var(--clr-green-400);
   border: 0;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   color: hsl(var(--clr-green-900));
   width: 100%;
   opacity: 0.5;
@@ -291,4 +281,3 @@ input[type="number"]:is(:hover, :focus-visible) {
 .reset-button:is(:hover, :focus-visible) {
   opacity: 1;
 }
-
