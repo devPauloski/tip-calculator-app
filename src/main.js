@@ -10,7 +10,6 @@ billInput.addEventListener("input", (event) => {
   let billValue = input.value.replace(/[^0-9.]/g, '');
 
   const splitValueByDot = billValue.split(".");
-  
   // keep only one dot
   if (splitValueByDot.length > 2) {
     billValue = splitValueByDot[0] + "." + splitValueByDot[1]; 
@@ -30,6 +29,8 @@ billInput.addEventListener("input", (event) => {
   } else {
     input.value = "";
   }
+
+  console.log(number);
 });
 
 peopleInput.addEventListener("input", (event) => {
