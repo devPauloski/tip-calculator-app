@@ -46,4 +46,10 @@ customTipInput.addEventListener("input", (event) => {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  let validInput = true;
+
+  if (billInput.value === 0) {
+    validInput = false;
+  }
 });
