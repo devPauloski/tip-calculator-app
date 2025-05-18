@@ -2,6 +2,7 @@ const form = document.querySelector("form");
 const billInput = document.querySelector(".bill-input");
 const peopleInput = document.querySelector(".people-input");
 const tipOptions = document.querySelectorAll(".tip-option");
+const customTipInput = document.querySelector(".custom-tip-input");
 const outputTipValue = document.querySelector(".output-tip-value");
 const outputTotalValue = document.querySelector(".output-total-value");
 
@@ -29,14 +30,18 @@ billInput.addEventListener("input", (event) => {
   } else {
     input.value = "";
   }
-
-  console.log(number);
 });
 
 peopleInput.addEventListener("input", (event) => {
   const input = event.target;
   let peopleValue = input.value.replace(/[^0-9]/g, '');
   input.value = peopleValue;
+});
+
+customTipInput.addEventListener("input", (event) => {
+  const input = event.target;
+  let customTipValue = input.value.replace(/[^0-9]/g, '');
+  input.value = customTipValue;
 });
 
 form.addEventListener("submit", (event) => {
