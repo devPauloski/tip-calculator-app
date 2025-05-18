@@ -5,18 +5,37 @@ const tipOptions = document.querySelectorAll(".tip-option");
 const outputTipValue = document.querySelector(".output-tip-value");
 const outputTotalValue = document.querySelector(".output-total-value");
 
-billInput.addEventListener("input", () => {
-  let billValue = billInput.value.replace(/[^0-9.]/g, "");
-  let billValueSplit = billValue.split(".");
+billInput.addEventListener("input", (event) => {
+  const input = event.target;
+  let billValue = input.value.replace(/[^0-9.]/g, '');
 
-  if (billValueSplit.length >= 2) {
-    billValue = billValueSplit[0] + "." + billValueSplit[1].slice(0, 2);
+  const splitValueByDot = billValue.split(".");
+  
+  // keep only one dot
+  if (splitValueByDot.length > 2) {
+    billValue = splitValueByDot[0] + "." + splitValueByDot[1]; 
   }
 
-  billInput.value = new Intl.NumberFormat("en-US", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2
-  }).format(billValue);
+  // Limit to 2 decimal places
+  if (splitValueByDot.length === 2) {
+    splitValueByDot[1] = splitValueByDot[1].slice(0, 2);
+    billValue = splitValueByDot[0] + "." + splitValueByDot[1];
+  }
+
+  const number = parseFloat(billValue);
+
+  if (!isNaN(number)) {
+    const [integerPart, decimalPart] = billValue.split('.');
+    input.value = new Intl.NumberFormat().format(parseInt(integerPart)) + (decimalPart !== undefined ? '.' + decimalPart : '');
+  } else {
+    input.value = "";
+  }
+});
+
+peopleInput.addEventListener("input", (event) => {
+  const input = event.target;
+  let peopleValue = input.value.replace(/[^0-9]/g, '');
+  input.value = peopleValue;
 });
 
 form.addEventListener("submit", (event) => {
