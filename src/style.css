@@ -199,6 +199,11 @@ input[type="text"]:is(:hover, :focus-visible) {
   outline-offset: 2px;
 }
 
+.tip-button.selected {
+  background-color: var(--clr-green-400);
+  color: hsl(var(--clr-green-900));
+}
+
 .custom-tip-input {
   border: 0;
   background-color: hsla(var(--clr-grey-200), 0.35);

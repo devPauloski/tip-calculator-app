@@ -1,7 +1,7 @@
 const form = document.querySelector("form");
 const billInput = document.querySelector(".bill-input");
 const peopleInput = document.querySelector(".people-input");
-const tipOptions = document.querySelectorAll(".tip-option");
+const tipButtons = document.querySelectorAll(".tip-button");
 const customTipInput = document.querySelector(".custom-tip-input");
 const outputTipValue = document.querySelector(".output-tip-value");
 const outputTotalValue = document.querySelector(".output-total-value");
@@ -43,6 +43,7 @@ customTipInput.addEventListener("input", (event) => {
   let customTipValue = input.value.replace(/[^0-9]/g, '');
   input.value = customTipValue;
 });
+
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
