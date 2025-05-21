@@ -1,10 +1,12 @@
 const form = document.querySelector("form");
 const billInput = document.querySelector(".bill-input");
-const peopleInput = document.querySelector(".people-input");
 const tipButtons = document.querySelectorAll(".tip-button");
 const customTipInput = document.querySelector(".custom-tip-input");
+const peopleInput = document.querySelector(".people-input");
 const outputTipValue = document.querySelector(".output-tip-value");
 const outputTotalValue = document.querySelector(".output-total-value");
+
+let selectedTipValue = "";
 
 billInput.addEventListener("input", (event) => {
   const input = event.target;
@@ -38,10 +40,25 @@ peopleInput.addEventListener("input", (event) => {
   input.value = peopleValue;
 });
 
+tipButtons.forEach((tipButton) => {
+  tipButton.addEventListener("click", () => {
+    selectedTipValue = tipButton.dataset.value;
+    tipButtons.forEach(tipButton => tipButton.classList.remove("selected"));
+    tipButton.classList.add("selected");
+
+    customTipInput.value = "";
+  })
+});
+
 customTipInput.addEventListener("input", (event) => {
   const input = event.target;
   let customTipValue = input.value.replace(/[^0-9]/g, '');
   input.value = customTipValue;
+
+  if (input.value) {
+    selectedTipValue = input.value;
+    tipButtons.forEach(tipButton => tipButton.classList.remove("selected"));
+  }
 });
 
 
@@ -50,7 +67,17 @@ form.addEventListener("submit", (event) => {
 
   let validInput = true;
 
-  if (billInput.value === 0) {
+  if (billInput.value === "") {
     validInput = false;
   }
+
+  if (selectedTipValue === "") {
+    validInput = false;
+  }
+
+  if (peopleInput.value === "") {
+    validInput = false;
+  }
+
+  
 });
