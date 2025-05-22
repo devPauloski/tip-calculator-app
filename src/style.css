@@ -96,7 +96,7 @@ body {
   display: grid;
 }
 
-@media (width >= 48rem) {
+@media (min-width: 48em) {
   .tip-calculator-body {
     grid-template-columns: 1fr 1fr;
     border-end-start-radius: 1.5rem;
