@@ -45,10 +45,9 @@ peopleInput.addEventListener("input", (event) => {
   const input = event.target;
   let peopleValue = input.value.replace(/[^0-9]/g, "");
   input.value = peopleValue;
- 
 
   if (parseFloat(input.value) === 0) {
-    error.textContent = "Can't be zero"
+    error.textContent = "Can't be zero";
     peopleInput.classList.add("invalid");
     computeTipResult();
   } else {
@@ -91,15 +90,14 @@ customTipInput.addEventListener("input", (event) => {
 
 // Reset button
 resetButton.addEventListener("click", () => {
-  document.querySelectorAll("input").forEach((input) => {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => {
     input.value = "";
   });
 
-  document.querySelectorAll(".tip-button").forEach((button) => {
-    button.classList.remove("selected");
-    selectedTipValue = "";
-  });
-  
+  tipButtons.forEach((button) => button.classList.remove("selected"));
+
+  selectedTipValue = "";
   computeTipResult();
 });
 
@@ -116,9 +114,9 @@ const computeTipResult = () => {
     const tipPercent = selectedTipValue;
     const peopleCount = parseFloat(peopleInput.value);
 
-    const formatter = new Intl.NumberFormat('en-US', {
+    const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     });
 
     const tipAmountPerPerson = formatter.format(
@@ -126,7 +124,7 @@ const computeTipResult = () => {
     );
 
     const totalAmountPerPerson = formatter.format(
-      (((1 + tipPercent) * billAmount) / peopleCount)
+      ((1 + tipPercent) * billAmount) / peopleCount
     );
 
     outputTipValue.textContent = `$${tipAmountPerPerson}`;
