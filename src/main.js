@@ -42,8 +42,8 @@ peopleInput.addEventListener("input", (event) => {
 
 tipButtons.forEach((tipButton) => {
   tipButton.addEventListener("click", (event) => {
-    const selectedTipButton = event.target;
-    selectedTipValue = selectedTipButton.dataset.value;
+    let selectedTipButton = event.target;
+    selectedTipValue = parseFloat(selectedTipButton.dataset.value);
     
     tipButtons.forEach(tipButton => tipButton.classList.remove("selected"));
     selectedTipButton.classList.add("selected");
@@ -58,15 +58,13 @@ customTipInput.addEventListener("input", (event) => {
   input.value = customTipValue;
 
   if (input.value) {
-    selectedTipValue = input.value;
+    selectedTipValue = parsefloat(input.value) / 100;
     tipButtons.forEach(tipButton => tipButton.classList.remove("selected"));
-  } else {
-    selectedTipValue = "";
-  }
+  } 
 });
 
-form.addEventListener("input", () => {
-
+form.addEventListener("input", (event) => {
+  event.preventDefault();
   let validInput = true;
 
   if (billInput.value === "") {
@@ -83,11 +81,14 @@ form.addEventListener("input", () => {
 
   if (validInput) {
     const billAmount = parseFloat(billInput.value.replaceAll(",", ""));
-    const tipPercent = parseFloat(selectedTipValue);
+    const tipPercent = selectedTipValue;
     const peopleCount = parseFloat(peopleInput.value);
 
-    console.log(billAmount);
+    const tipAmountPerPerson = ((tipPercent * billAmount) / peopleCount).toFixed(2);
+    const totalAmountPerPerson = (((1 + tipPercent) * billAmount) / peopleCount).toFixed(2);
+
+    outputTipValue.textContent = `$${tipAmountPerPerson}`;
+    outputTotalValue.textContent = `$${totalAmountPerPerson}`;
     console.log(tipPercent);
-    console.log(peopleCount);
   }  
 });
