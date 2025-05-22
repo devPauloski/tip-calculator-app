@@ -5,9 +5,12 @@ const customTipInput = document.querySelector(".custom-tip-input");
 const peopleInput = document.querySelector(".people-input");
 const outputTipValue = document.querySelector(".output-tip-value");
 const outputTotalValue = document.querySelector(".output-total-value");
+const error = document.querySelector(".error");
+const resetButton = document.querySelector(".reset-button");
 
 let selectedTipValue = "";
 
+// Bill input
 billInput.addEventListener("input", (event) => {
   const input = event.target;
   let billValue = input.value.replace(/[^0-9.]/g, "");
@@ -38,13 +41,25 @@ billInput.addEventListener("input", (event) => {
   computeTipResult();
 });
 
+// People input
 peopleInput.addEventListener("input", (event) => {
   const input = event.target;
   let peopleValue = input.value.replace(/[^0-9]/g, "");
   input.value = peopleValue;
-  computeTipResult();
+ 
+
+  if (parseFloat(input.value) === 0) {
+    error.textContent = "Can't be zero"
+    peopleInput.classList.add("invalid");
+    computeTipResult();
+  } else {
+    error.textContent = "";
+    peopleInput.classList.remove("invalid");
+    computeTipResult();
+  }
 });
 
+// Tip buttons
 tipButtons.forEach((tipButton) => {
   tipButton.addEventListener("click", (event) => {
     let selectedTipButton = event.target;
@@ -59,6 +74,7 @@ tipButtons.forEach((tipButton) => {
   });
 });
 
+// Custom tip input
 customTipInput.addEventListener("input", (event) => {
   const input = event.target;
   let customTipValue = input.value.replace(/[^0-9]/g, "");
@@ -74,23 +90,44 @@ customTipInput.addEventListener("input", (event) => {
   }
 });
 
+// Reset button
+resetButton.addEventListener("click", () => {
+  document.querySelectorAll("input").forEach((input) => {
+    input.value = "";
+  });
+
+  document.querySelectorAll(".tip-button").forEach((button) => {
+    button.classList.remove("selected");
+    selectedTipValue = "";
+  });
+  
+  computeTipResult();
+});
+
+// Tip calculator function
 const computeTipResult = () => {
   let validInput = true;
 
   if (billInput.value === "") validInput = false;
   if (selectedTipValue === "") validInput = false;
-  if (peopleInput.value === "" || peopleInput.value === "0") validInput = false;
+  if (peopleInput.value === "" || parseFloat(peopleInput.value) === 0) validInput = false;
 
   if (validInput) {
     const billAmount = parseFloat(billInput.value.replaceAll(",", ""));
     const tipPercent = selectedTipValue;
     const peopleCount = parseFloat(peopleInput.value);
 
-    const tipAmountPerPerson = new Intl.NumberFormat().format(
-      ((tipPercent * billAmount) / peopleCount).toFixed(2)
+    const formatter = new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+
+    const tipAmountPerPerson = formatter.format(
+      (tipPercent * billAmount) / peopleCount
     );
-    const totalAmountPerPerson = new Intl.NumberFormat().format(
-      (((1 + tipPercent) * billAmount) / peopleCount).toFixed(2)
+
+    const totalAmountPerPerson =formatter.format(
+      (((1 + tipPercent) * billAmount) / peopleCount)
     );
 
     outputTipValue.textContent = `$${tipAmountPerPerson}`;

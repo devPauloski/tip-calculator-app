@@ -141,14 +141,14 @@ input[type="text"] {
   color: var(--clr-grey-400);
 }
 
-input[type="text"]:is(:hover, :focus-visible) {
-  outline: 2px solid var(--clr-green-400);
-  color: hsl(var(--clr-green-900));
-}
-
 .bill-input {
   text-align: end;
   padding-inline-end: 1rem;
+}
+
+.bill-input:is(:hover, :focus-visible) {
+  outline: 2px solid var(--clr-green-400);
+  color: hsl(var(--clr-green-900));
 }
 
 .bill-input-decor {
@@ -211,9 +211,19 @@ input[type="text"]:is(:hover, :focus-visible) {
   text-align: center;
 }
 
+.custom-tip-input:is(:hover, :focus-visible) {
+  outline: 2px solid var(--clr-green-400);
+  color: hsl(var(--clr-green-900));
+}
+
 .people-input {
   text-align: end;
   padding-inline-end: 1rem;
+}
+
+.people-input:is(:hover, :focus-visible) {
+  outline: 2px solid var(--clr-green-400);
+  color: hsl(var(--clr-green-900));
 }
 
 .people-input-decor {
@@ -228,6 +238,22 @@ input[type="text"]:is(:hover, :focus-visible) {
   height: 3rem;
   top: -3rem;
   left: 1rem;
+}
+
+.flex-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.people-input.invalid {
+  outline: 2px solid red;
+}
+
+.error {
+  font-size: 0.875rem;
+  color: red;;
 }
 
 .output-section {
