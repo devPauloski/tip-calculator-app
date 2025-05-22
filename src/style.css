@@ -74,7 +74,7 @@ body {
   margin-inline: auto;
 }
 
-@media (width >= 48rem) {
+@media (min-width: 48em) {
   .tip-calculator-wrapper {
     max-inline-size: 57.625rem;
   }
