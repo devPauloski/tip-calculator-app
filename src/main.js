@@ -41,10 +41,12 @@ peopleInput.addEventListener("input", (event) => {
 });
 
 tipButtons.forEach((tipButton) => {
-  tipButton.addEventListener("click", () => {
-    selectedTipValue = tipButton.dataset.value;
+  tipButton.addEventListener("click", (event) => {
+    const selectedTipButton = event.target;
+    selectedTipValue = selectedTipButton.dataset.value;
+    
     tipButtons.forEach(tipButton => tipButton.classList.remove("selected"));
-    tipButton.classList.add("selected");
+    selectedTipButton.classList.add("selected");
 
     customTipInput.value = "";
   })
@@ -58,12 +60,12 @@ customTipInput.addEventListener("input", (event) => {
   if (input.value) {
     selectedTipValue = input.value;
     tipButtons.forEach(tipButton => tipButton.classList.remove("selected"));
+  } else {
+    selectedTipValue = "";
   }
 });
 
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+form.addEventListener("input", () => {
 
   let validInput = true;
 
@@ -75,9 +77,17 @@ form.addEventListener("submit", (event) => {
     validInput = false;
   }
 
-  if (peopleInput.value === "") {
+  if (peopleInput.value === "" || peopleInput.value === "0") {
     validInput = false;
   }
 
-  
+  if (validInput) {
+    const billAmount = parseFloat(billInput.value.replaceAll(",", ""));
+    const tipPercent = parseFloat(selectedTipValue);
+    const peopleCount = parseFloat(peopleInput.value);
+
+    console.log(billAmount);
+    console.log(tipPercent);
+    console.log(peopleCount);
+  }  
 });
