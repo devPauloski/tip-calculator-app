@@ -69,10 +69,6 @@ body {
   width: 1px;
 }
 
-main {
-  margin-block: 2rem;
-}
-
 .tip-calculator-wrapper {
   max-inline-size: 35rem;
   margin-inline: auto;
