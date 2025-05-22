@@ -70,6 +70,7 @@ body {
 }
 
 .tip-calculator-wrapper {
+  margin-block: 1rem;
   max-inline-size: 35rem;
   margin-inline: auto;
 }
