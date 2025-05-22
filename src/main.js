@@ -1,4 +1,3 @@
-const form = document.querySelector("form");
 const billInput = document.querySelector(".bill-input");
 const tipButtons = document.querySelectorAll(".tip-button");
 const customTipInput = document.querySelector(".custom-tip-input");
@@ -126,7 +125,7 @@ const computeTipResult = () => {
       (tipPercent * billAmount) / peopleCount
     );
 
-    const totalAmountPerPerson =formatter.format(
+    const totalAmountPerPerson = formatter.format(
       (((1 + tipPercent) * billAmount) / peopleCount)
     );
 
