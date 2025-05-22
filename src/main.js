@@ -65,13 +65,13 @@ customTipInput.addEventListener("input", (event) => {
   input.value = customTipValue;
 
   if (input.value) {
-    selectedTipValue = parsefloat(input.value) / 100;
+    selectedTipValue = parseFloat(input.value) / 100;
     tipButtons.forEach((tipButton) => tipButton.classList.remove("selected"));
+    computeTipResult();
   } else {
     selectedTipValue = "";
+    computeTipResult();
   }
-
-  computeTipResult();
 });
 
 const computeTipResult = () => {
